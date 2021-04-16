@@ -11,7 +11,6 @@ const menuOne = new Menu('menu1', 15, 'arrocito', 'grano' );
 const menuTwo = new Menu('menu2', 10, 'platodemenuDOS','pescado');
 const carte = new Carte([plateOne, plateTwo],[menuOne,menuTwo]);
 const carteOutput = carte.print();
-console.log(carteOutput);
 
 describe('Carte test', ()=> {
   /*it('Carte must be an instantiable class', () => {

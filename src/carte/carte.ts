@@ -17,7 +17,6 @@ export class Carte {
     this.plates.forEach((plate) => {
       output += plate.print() + '\n';
     });
-    console.log(output);
     return output;
   }
 }

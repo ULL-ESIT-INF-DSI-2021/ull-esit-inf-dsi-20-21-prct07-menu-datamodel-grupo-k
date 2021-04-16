@@ -8,7 +8,6 @@ export class Plate {
     let output: string = '';
     output += 'name: ' + this.name; + '\n';
     output += 'price: ' + this.price + '\n';
-    console.log(output);
     return output;
   }
 }

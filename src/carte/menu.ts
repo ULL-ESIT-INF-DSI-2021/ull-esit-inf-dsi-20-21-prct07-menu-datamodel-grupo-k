@@ -11,7 +11,6 @@ export class Menu {
     output += 'name: ' + this.name; + '\n';
     output += 'price: ' + this.price + '\n';
     output += 'plates: ' + this.plate + '\n';
-    console.log(output);
     return output;
   }
 }
