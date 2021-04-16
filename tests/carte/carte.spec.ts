@@ -16,4 +16,7 @@ describe('Carte test', ()=> {
   it('Carte must has a Plates atribute', () => {
     expect(carte).to.ownProperty('plates');
   });
+  it('Carte must has a Menus atribute', () => {
+    expect(carte).to.ownProperty('menus');
+  });
 });
