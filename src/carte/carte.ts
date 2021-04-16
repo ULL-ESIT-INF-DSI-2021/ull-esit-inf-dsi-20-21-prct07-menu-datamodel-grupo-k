@@ -5,4 +5,19 @@ export class Carte {
         public readonly plates: Plate[],
         public readonly menus: Menu[],
   ) {}
+
+  print():string {
+    let output: string = '';
+    output += '--Carta--' + '\n';
+    output += '--Menus--' + '\n';
+    this.menus.forEach((menu) => {
+      output += menu.print() + '\n';
+    });
+    output += '--Plates--' + '\n';
+    this.plates.forEach((plate) => {
+      output += plate.print() + '\n';
+    });
+    console.log(output);
+    return output;
+  }
 }

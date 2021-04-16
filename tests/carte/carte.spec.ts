@@ -10,6 +10,8 @@ const plateOne = new Plate('batata', 20);
 const menuOne = new Menu('menu1', 15, 'arrocito', 'grano' );
 const menuTwo = new Menu('menu2', 10, 'platodemenuDOS','pescado');
 const carte = new Carte([plateOne, plateTwo],[menuOne,menuTwo]);
+const carteOutput = carte.print();
+console.log(carteOutput);
 
 describe('Carte test', ()=> {
   /*it('Carte must be an instantiable class', () => {
@@ -28,6 +30,6 @@ describe('Carte test', ()=> {
     expect(carte.plates).to.deep.equal([plateOne, plateTwo]);
   });
   it('Carte must show all the menus and plates information', () => {
-    expect().to.deep.equal([plateOne, plateTwo]);
+    expect(carte.print()).to.deep.equal(carteOutput);
   });
 });
