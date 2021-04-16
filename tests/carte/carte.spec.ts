@@ -5,8 +5,8 @@ import {Menu} from '../../src/carte/menu';
 import {Plate} from '../../src/carte/plate';
 
 
-const plateOne = Plate('pasta', 10);
-const plateTwo = Plate('pasta', 10);
+const plateTwo = new Plate('pasta', 10);
+const plateOne = new Plate('pasta', 10);
 const carte = new Carte([plateOne, plateTwo]);
 
 describe('Carte test', ()=> {
@@ -14,6 +14,6 @@ describe('Carte test', ()=> {
     expect(new Carte([plateOne, plateTwo])).to.not.equal(TypeError);
   });
   it('Carte must has a Plates atribute', () => {
-    expect(new Carte()).to.ownProperty('plates');
+    expect(carte).to.ownProperty('plates');
   });
 });
