@@ -21,4 +21,13 @@ describe('Carte test', ()=> {
   it('Carte must has a Menus atribute', () => {
     expect(carte).to.ownProperty('menus');
   });
+  it('Carte Menus atribute must be accesible', () => {
+    expect(carte.menus).to.deep.equal([menuOne,menuTwo]);
+  });
+  it('Carte Plates atribute must be accesible', () => {
+    expect(carte.plates).to.deep.equal([plateOne, plateTwo]);
+  });
+  it('Carte must show all the menus and plates information', () => {
+    expect().to.deep.equal([plateOne, plateTwo]);
+  });
 });
