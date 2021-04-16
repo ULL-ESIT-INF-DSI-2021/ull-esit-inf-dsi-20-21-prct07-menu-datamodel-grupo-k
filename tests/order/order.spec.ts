@@ -1,7 +1,7 @@
 import 'mocha';
 import {expect} from 'chai';
 import {Order} from '../../src/order/order';
-import {Menu} from '../../src/order/menu';
+import {Menu} from '../../src/carte/menu';
 import {Carte} from '../../src/carte/carte';
 import {Plate} from '../../src/carte/plate';
 
@@ -11,7 +11,6 @@ const plateTwo = new Plate('pasta', 10);
 const plateOne = new Plate('batata', 20);
 const carte = new Carte([plateOne, plateTwo],[menuOne,menuTwo]);
 const order = new Order(carte,[menuOne,menuTwo]);
-const orderOutput = order.print();
 
 describe('Order test', ()=> {
   /*it('Order must be an instantiable class', () => {
@@ -27,9 +26,6 @@ describe('Order test', ()=> {
     expect(order.menus).to.deep.equal([menuOne,menuTwo]);
   });
   it('Order Plates atribute must be accesible', () => {
-    expect(order.carte).to.deep.equal(carte);
-  });
-  it('Order must show all the menus and plates information', () => {
-    expect(order.print()).to.deep.equal(carteOutput);
+    expect(order.carte).to.be.equal(carte);
   });
 });
