@@ -22,13 +22,13 @@ export abstract class Aliment implements GeneralInfo, CompositionNutritional {
         public readonly protein: number,
         public readonly fats: number,
         public readonly carbohydrates: number,
-        public readonly calories?: number,
-        public readonly starch?: number,
-        public readonly sugars?: number,
-        public readonly fiber?: number,
-        public readonly water?: number,
-        public readonly locality?: string,
-        public readonly city?: string) {
+        public readonly calories: number,
+        public readonly starch: number,
+        public readonly sugars: number,
+        public readonly fiber: number,
+        public readonly water: number,
+        public readonly locality: string,
+        public readonly city: string) {
        this.name = name;
        this.price = price;
      }
