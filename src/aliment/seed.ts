@@ -1,7 +1,9 @@
+/* eslint-disable camelcase */
+/* eslint-disable max-len */
 import {Aliment} from "./aliment";
 import {alimentGroup} from './aliment';
 
-class Seed extends Aliment {
+export class Seed extends Aliment {
     private readonly AlimentGroup: alimentGroup = alimentGroup.Seed
 
     constructor( public readonly name: string,
@@ -29,6 +31,6 @@ class Seed extends Aliment {
     }
 
     getAlimentGroup(): alimentGroup {
-        return this.AlimentGroup;
-      }
+      return this.AlimentGroup;
+    }
 }

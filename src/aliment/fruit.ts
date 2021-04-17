@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable max-len */
 import {Aliment} from "./aliment";
 import {alimentGroup} from './aliment';
 
@@ -29,8 +31,6 @@ export class Fruit extends Aliment {
     }
 
     getAlimentGroup(): alimentGroup {
-        return this.AlimentGroup;
-      }
-
-
+      return this.AlimentGroup;
+    }
 }

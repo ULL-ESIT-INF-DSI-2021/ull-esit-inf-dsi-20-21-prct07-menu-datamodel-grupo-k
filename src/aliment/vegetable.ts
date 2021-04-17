@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable max-len */
 import {Aliment} from "./aliment";
 import {alimentGroup} from './aliment';
 

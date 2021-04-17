@@ -1,4 +1,4 @@
-const dic = new Map<string, number>();
+/*const dic = new Map<string, number>();
 
 
 
@@ -13,3 +13,4 @@ dic.forEach((h) => {
 const entrante: Entree = new Entree("hola", dic);
 
 console.log(entrante);
+*/
