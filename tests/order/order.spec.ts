@@ -7,6 +7,7 @@ import {Plate} from '../../src/carte/plate';
 
 const menuOne = new Menu('menu1', 15, 'arrocito', 'grano' );
 const menuTwo = new Menu('menu2', 10, 'platodemenuDOS', 'pescado');
+const menuThree = new Menu('menu3', 14, 'plato3', 'grano');
 const plateTwo = new Plate('pasta', 10);
 const plateOne = new Plate('batata', 20);
 const carte = new Carte([plateOne, plateTwo], [menuOne, menuTwo]);
@@ -38,5 +39,9 @@ describe('Order test', ()=> {
   });
   it('Order  must print it a void order, if it has not order', () => {
     expect(new Order(carte).print()).to.be.equal('Order Empty:' + '\n');
+  });
+  it('Order must add a menu', () => {
+    order.addMenu(menuThree);
+    expect(order.menus).to.deep.equal([menuOne, menuTwo, menuThree]);
   });
 });
