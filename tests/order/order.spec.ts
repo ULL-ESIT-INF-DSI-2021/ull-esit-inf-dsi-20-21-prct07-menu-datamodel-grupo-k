@@ -1,3 +1,4 @@
+/*
 import 'mocha';
 import {expect} from 'chai';
 import {Order} from '../../src/order/order';
@@ -16,9 +17,9 @@ const orderOutput = order.print();
 console.log(orderOutput);
 
 describe('Order test', ()=> {
-  /* it('Order must be an instantiable class', () => {
+   it('Order must be an instantiable class', () => {
     expect(new Order([plateOne, plateTwo])).to.not.equal(TypeError);
-  });*/
+  });
   it('Order must be  instantiable without a Menu, just with a Carte', () => {
     expect(new Order(carte)).to.not.equal(TypeError);
   });
@@ -45,3 +46,4 @@ describe('Order test', ()=> {
     expect(order.menus).to.deep.equal([menuOne, menuTwo, menuThree]);
   });
 });
+*/

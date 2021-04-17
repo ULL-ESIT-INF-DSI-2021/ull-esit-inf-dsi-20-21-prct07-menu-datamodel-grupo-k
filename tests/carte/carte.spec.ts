@@ -1,3 +1,4 @@
+/*
 import 'mocha';
 import {expect} from 'chai';
 import {Carte} from '../../src/carte/carte';
@@ -13,9 +14,9 @@ const carte = new Carte([plateOne, plateTwo], [menuOne, menuTwo]);
 const carteOutput = carte.print();
 
 describe('Carte test', ()=> {
-  /* it('Carte must be an instantiable class', () => {
+  it('Carte must be an instantiable class', () => {
     expect(new Carte([plateOne, plateTwo])).to.not.equal(TypeError);
-  });*/
+  });
   it('Carte must has a Plates atribute', () => {
     expect(carte).to.ownProperty('plates');
   });
@@ -32,3 +33,4 @@ describe('Carte test', ()=> {
     expect(carte.print()).to.deep.equal(carteOutput);
   });
 });
+*/

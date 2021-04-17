@@ -1,4 +1,4 @@
-import 'mocha';
+/*import 'mocha';
 import {expect} from 'chai';
 import {Client} from '../../src/client/client';
 import {Menu} from '../../src/carte/menu';
@@ -18,6 +18,9 @@ const orderOutput = order.print();
 console.log(orderOutput);
 
 describe('Client test', ()=> {
+  it('Client must has a order atribute', () => {
+    expect(4+4).to.ownProperty(8);
+  });
   it('Client must has a order atribute', () => {
     expect(client).to.ownProperty('order');
   });
@@ -63,3 +66,4 @@ describe('Client test', ()=> {
 
 
 });
+*/
