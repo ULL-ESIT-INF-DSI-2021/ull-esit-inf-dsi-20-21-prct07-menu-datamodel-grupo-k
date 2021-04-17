@@ -1,11 +1,11 @@
 import {Aliment} from "../aliments/aliment";
 import {Plate} from "./plate";
 /**
- * Clase para representar un plato entrante
+ * Clase para representar un plato principal
  */
-export class Entree extends Plate {
+export class MainCourse extends Plate {
   /**
-   * Constructor de la clase Entree
+   * Constructor de la clase MainCourse
    * @param name Nombre del plato
    * @param ingredients Ingredientes del plato
    */
