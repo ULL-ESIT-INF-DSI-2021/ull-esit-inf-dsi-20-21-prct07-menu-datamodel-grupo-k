@@ -34,7 +34,7 @@ describe('Client test', ()=> {
     expect(client.chooseSetMenu('menu1', carte)).to.be.equal(menuOne);
     expect(client.chooseSetMenu('menu6', carte)).to.be.equal(undefined);
   });
-  it('Client should chooose a plate by its name', () => {
+  it('Client should choose a plate by its name', () => {
     expect(client.choosePlate('batata', carte)).to.be.equal(plateOne);
     expect(client.choosePlate('mojo', carte)).to.be.equal(undefined);
   });
@@ -43,4 +43,23 @@ describe('Client test', ()=> {
     client22.choosePlate('batata', carte);
     expect(client22.getTotalPrice()).to.be.equal(20);
   });
+  // it('Client should choose a set menu and be able add a plate to the menu, () => {
+  //  expect(client.chooseSetMenuWithEdition('add',pasta,menu1).to.be.equal(personalizeMenu1WithPasta);
+  // });
+  // it('Client should choose a set menu and be able remove a plate to the menu, () => {
+  //  expect(client.chooseSetMenuWithEdition('remove',pasta,menu1).to.be.equal(personalizeMenu1WithoutPasta);
+  // });
+  // it('Client should choose a set menu and be able add a plate, adding the total value () => {
+  // client.chooseSetMenuWithEdition('add',pasta,menu1);
+  //  expect(client.getTotalPrice()).to.be.equal(999);
+  // });
+  // it('Client should choose a set menu and be able remove a plate, substracting the total value () => {
+  // client.chooseSetMenuWithEdition('remove',pasta,menu1);
+  // expect(client.getTotalPrice()).to.be.equal(500);
+  // });
+
+
+
+
+
 });

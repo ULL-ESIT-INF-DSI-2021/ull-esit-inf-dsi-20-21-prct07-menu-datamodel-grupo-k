@@ -3,6 +3,11 @@ import {Menu} from '../carte/menu';
 import {Carte} from '../carte/carte';
 import {Order} from '../order/order';
 
+/* TODO
+  encapsular todo los tipos en un solo fichero
+*/
+
+export type modifierOption = 'add' | 'remove'
 export class Client {
   private totalPrice: number = 0;
   constructor(
@@ -29,6 +34,10 @@ export class Client {
     return menuElected as Menu;
   }
 
+
+  /* TODO
+      cambiar plate por PersonalizedMenu
+  */
   choosePlate(nameElectedPlate: string, carte: Carte):Plate | undefined {
     const plateElected: Plate | undefined = carte.plates.find((menu) =>
       menu.name === nameElectedPlate);
@@ -43,4 +52,28 @@ export class Client {
   getTotalPrice(): number {
     return this.totalPrice;
   }
+
+  /*chooseSetMenuWithEdition(choice: modifierOption, plate: Map <Plate,number>, menu: string): void {
+    if (choice === 'add') {
+      const personalizeMenu = new PersonalizeMenu(menu, add, plate)
+    } else if (choice === 'remove') {
+      const personalizeMenu = new PersonalizeMenu(menu, remove, plate)
+    }
+  }*/
 }
+
+
+
+
+ 
+
+
+const menuOne = new Menu('menu1', 15, 'arrocito', 'grano' );
+const menuTwo = new Menu('menu2', 10, 'platodemenuDOS', 'pescado');
+const plateTwo = new Plate('pasta', 10);
+const plateOne = new Plate('batata', 20);
+const carte = new Carte([plateOne, plateTwo], [menuOne, menuTwo]);
+const order = new Order(carte);
+const client = new Client(order);
+// client.chooseSetMenuWithEdition('asd', '', '');
+
