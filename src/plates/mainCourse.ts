@@ -1,4 +1,4 @@
-import {Aliment} from "../aliments/aliment";
+import {Aliment} from "../aliment/aliment";
 import {Plate} from "./plate";
 /**
  * Clase para representar un plato principal

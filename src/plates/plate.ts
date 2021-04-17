@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
-import {Aliment, alimentGroup} from "../aliments/aliment";
-import {NutritionalComposition} from "../aliments/nutritionalComposition";
+import {Aliment, alimentGroup} from "../aliment/aliment";
+import {CompositionNutritional} from "../aliment/nutritional_composition_interface";
 
-export abstract class Plate implements NutritionalComposition {
+export abstract class Plate implements CompositionNutritional {
     public calories: number = 0;
     public protein: number = 0;
     public fats: number = 0;
@@ -63,7 +63,7 @@ export abstract class Plate implements NutritionalComposition {
     }
     private calculatePrice() {
       this.ingredients.forEach((value, key) => {
-        this.price += key.getPrice();
+        this.price += key.getPriceOfAliment();
       });
     }
     private identifyPredominantAlimentGroup() {
