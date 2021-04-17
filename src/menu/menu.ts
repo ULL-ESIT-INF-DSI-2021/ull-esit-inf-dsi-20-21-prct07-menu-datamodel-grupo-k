@@ -1,8 +1,8 @@
-import { Aliment, alimentGroup } from "../aliment/aliment";
-import { CompositionNutritional } from "../aliment/nutritional_composition_interface";
-import { Plate } from "../plates/plate";
+import {Aliment, alimentGroup} from "../aliment/aliment";
+import {CompositionNutritional} from "../aliment/nutritional_composition_interface";
+import {Plate} from "../plates/plate";
 
-export abstract class Menu implements CompositionNutritional{
+export abstract class Menu implements CompositionNutritional {
     public protein: number = 0;
     public fats: number = 0;
     public carbohydrates: number = 0;
@@ -18,80 +18,80 @@ export abstract class Menu implements CompositionNutritional{
     }
 
     protected calculatePrice() {
-        this.plates.forEach((key) => {
-            this.price += key.getPrice();
-          });
+      this.plates.forEach((key) => {
+        this.price += key.getPrice();
+      });
     }
 
-   protected calculateNutritionalComposition() {
-        this.plates.forEach((key) => {
-            this.calories += key.getCalories();
-            this.protein += key.getProtein();
-            this.fats += key.getFats();
-            this.carbohydrates += key.getCarbohydrates();
-            this.starch += key.getStarch();
-            this.sugars += key.getSugars();
-            this.fiber += key.getFiber();
-            this.water += key.getWater();
-        });
+    protected calculateNutritionalComposition() {
+      this.plates.forEach((key) => {
+        this.calories += key.getCalories();
+        this.protein += key.getProtein();
+        this.fats += key.getFats();
+        this.carbohydrates += key.getCarbohydrates();
+        this.starch += key.getStarch();
+        this.sugars += key.getSugars();
+        this.fiber += key.getFiber();
+        this.water += key.getWater();
+      });
     }
 
     protected identifyAlimentGroupList() {
-        this.plates.forEach((key) => {
-            this.alimentGroupList.push(key.getPredominantAlimentGroup());
-        });
+      this.plates.forEach((key) => {
+        this.alimentGroupList.push(key.getPredominantAlimentGroup());
+      });
     }
 
-    getCalories():number  {
-        return this.calories;
+    getCalories():number {
+      return this.calories;
     }
 
     getProtein(): number {
-        return this.protein;
+      return this.protein;
     }
 
     getFats():number {
-        return this.fats;
+      return this.fats;
     }
 
     getCarbohydrates(): number {
-        return this.carbohydrates;
+      return this.carbohydrates;
     }
 
     getStarch():number {
-        return this.starch
+      return this.starch;
     }
 
-    getSugars():number{
-        return this.sugars
+    getSugars():number {
+      return this.sugars;
     }
 
-    getFiber(): number{
-        return this.fiber
+    getFiber(): number {
+      return this.fiber;
     }
 
-    getWater(): number{
-        return this.water
+    getWater(): number {
+      return this.water;
     }
 
     getPrice() : number {
-        return this.price;
+      return this.price;
     }
 
     getPlates(): Plate[] {
-        return this.plates;
+      return this.plates;
     }
 
-    getAlimentGroupList() : [alimentGroup, number][]{
-        return this.alimentGroupList;
+    getAlimentGroupList() : [alimentGroup, number][] {
+      return this.alimentGroupList;
     }
 
     print() : string {
       let output = "";
       output += "Nombre: " + this.name + "\n";
       output += "Precio: " + this.getPrice() + "\n";
-      output += "Platos: \n" + this.plates.forEach(element => {
-        output +=  "Nombre : " + element.getName() + " Precio : " + element.getPrice() + "\n";
+      output += "Platos: \n" + this.plates.forEach((element) => {
+        output += "Nombre : " + element.getName() + " Precio : " + element.getPrice() + "\n";
       }); + "\n";
       output += "Composicion Nutricional: " + "\n";
       output += "Calorias: " + this.getCalories() + "\n";

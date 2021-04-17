@@ -1,5 +1,5 @@
-import {Plate} from '.src/plate/plate';
-import {Menu} from '.src/menu/menu';
+import {Plate} from '../plates/plate';
+import {Menu} from '../menu/menu';
 export class Carte {
   constructor(
         public readonly plates: Plate[],

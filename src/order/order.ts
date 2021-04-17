@@ -1,14 +1,12 @@
-import {Carte} from '../carte/carte';
-import {Menu} from '../carte/menu';
+import {Menu} from '../menu/menu';
 export class Order {
-  constructor(
-        public readonly carte: Carte,
-        public readonly menus: Menu[] = [],
-  ) {}
+  private totalPrice: number = 0
+  constructor(public readonly menus: Menu[] = []) {}
 
 
   addMenu(menu: Menu):void {
     this.menus.push(menu);
+    this.totalPrice += menu.getPrice();
   }
 
   print():string {
@@ -21,6 +19,8 @@ export class Order {
       this.menus.forEach((menu) => {
         output += menu.name + '\n';
       });
+      output += '--TOTAL--' + '\n';
+      output += this.totalPrice;
     }
     return output;
   }

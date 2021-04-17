@@ -1,5 +1,7 @@
-import {Plate} from '../carte/plate';
-import {Menu} from '../carte/menu';
+/* eslint-disable max-len */
+import {Plate} from '../plates/plate';
+import {Menu} from '../menu/menu';
+import {PersonalizedMenu} from '../menu/personalizedmenu';
 import {Carte} from '../carte/carte';
 import {Order} from '../order/order';
 
@@ -8,8 +10,8 @@ import {Order} from '../order/order';
 */
 
 export type modifierOption = 'add' | 'remove'
+
 export class Client {
-  private totalPrice: number = 0;
   constructor(
         public readonly order: Order,
   ) {}
@@ -18,7 +20,6 @@ export class Client {
     let output: string = '';
     output += 'My order is:' + '\n';
     output += this.order.print()+'\n';
-    output += 'Total price: ' + this.totalPrice + '\n';
     return output;
   }
 
@@ -28,52 +29,31 @@ export class Client {
       menu.name === nameElectedMenu);
     if (typeof menuElected === 'undefined') {
       console.log('error');
-      throw new TypeError('menu no encontrado')
+      throw new TypeError('menu no encontrado');
     }
-    this.totalPrice += menuElected.price;
     return menuElected as Menu;
   }
 
 
-  /* TODO
-      cambiar plate por PersonalizedMenu
-  */
-  choosePlate(nameElectedPlate: string, carte: Carte):Plate {
-    const plateElected: Plate | undefined = carte.plates.find((menu) =>
-      menu.name === nameElectedPlate);
+  choosePlate(nameElectedPlate: string, carte: Carte):PersonalizedMenu {
+    const plateElected: Plate | undefined = carte.plates.find((cartePlate) => cartePlate.getName() === nameElectedPlate);
     if (typeof plateElected === 'undefined') {
-      console.log('error');
-      throw new TypeError('plate not found')
+      throw new TypeError('Plate not found');
     }
-    this.totalPrice += plateElected.price;
-    return plateElected as Plate;
+    return new PersonalizedMenu(nameElectedPlate, [plateElected]);
   }
 
-  getTotalPrice(): number {
-    return this.totalPrice;
-  }
+  chooseSetMenuWithEdition(choice: modifierOption, plate: Plate, menu: Menu): PersonalizedMenu {
+    let menuName: string = '';
+    menuName += plate.getName();
 
-  /*chooseSetMenuWithEdition(choice: modifierOption, plate: Map <Plate,number>, menu: string): void {
+    const personalizeMenu = new PersonalizedMenu(menuName, [plate]);
+
     if (choice === 'add') {
-      const personalizeMenu = new PersonalizeMenu(menu, add, plate)
-    } else if (choice === 'remove') {
-      const personalizeMenu = new PersonalizeMenu(menu, remove, plate)
+      personalizeMenu.addPlate(plate);
+      return personalizeMenu;
+    } else {
+      return personalizeMenu;
     }
-  }*/
+  }
 }
-
-
-
-
- 
-
-
-const menuOne = new Menu('menu1', 15, 'arrocito', 'grano' );
-const menuTwo = new Menu('menu2', 10, 'platodemenuDOS', 'pescado');
-const plateTwo = new Plate('pasta', 10);
-const plateOne = new Plate('batata', 20);
-const carte = new Carte([plateOne, plateTwo], [menuOne, menuTwo]);
-const order = new Order(carte);
-const client = new Client(order);
-// client.chooseSetMenuWithEdition('asd', '', '');
-

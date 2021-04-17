@@ -1,4 +1,4 @@
-import { Menu } from '../carte/menu';
+import {Menu} from '../menu/menu';
 import {Client} from '../client/client';
 import {Order} from '../order/order';
 import {Carte} from '../carte/carte';
