@@ -19,20 +19,4 @@ export class Carte {
     });
     return output;
   }
-
-  findMenu(nameMenu: string):Menu {
-    const chooseMenu: Menu | undefined = this.menus.find((menu) => menu.name === nameMenu);
-    if (typeof chooseMenu === 'undefined') {
-      console.log('error');
-    }
-    return chooseMenu as Menu;
-  }
-
-  findPlate(namePlate: string):Plate {
-    const choosePlate: Plate | undefined = this.plates.find((menu) => menu.name === namePlate);
-    if (typeof choosePlate === 'undefined') {
-      console.log('error');
-    }
-    return choosePlate as Plate;
-  }
 }

@@ -1,46 +1,46 @@
-/*
 import 'mocha';
 import {expect} from 'chai';
 import {Client} from '../../src/client/client';
 import {Menu} from '../../src/carte/menu';
 import {Carte} from '../../src/carte/carte';
+import {Order} from '../../src/order/order';
 import {Plate} from '../../src/carte/plate';
 
 
-
 const menuOne = new Menu('menu1', 15, 'arrocito', 'grano' );
-const menuTwo = new Menu('menu2', 10, 'platodemenuDOS','pescado');
+const menuTwo = new Menu('menu2', 10, 'platodemenuDOS', 'pescado');
 const plateTwo = new Plate('pasta', 10);
 const plateOne = new Plate('batata', 20);
-const carte = new Carte([plateOne, plateTwo], [menuOne,menuTwo]);
-const order = new Client(carte,[menuOne, menuTwo]);
-const client = new Client(carte,[menuOne, menuTwo]);
+const carte = new Carte([plateOne, plateTwo], [menuOne, menuTwo]);
+const order = new Order(carte);
+const client = new Client(order);
 const orderOutput = order.print();
 console.log(orderOutput);
 
 describe('Client test', ()=> {
-
-  it('Client must has a Plates atribute', () => {
-    expect(order).to.ownProperty('carte');
+  it('Client must has a order atribute', () => {
+    expect(client).to.ownProperty('order');
   });
-  it('Client must has a Menus atribute', () => {
-    expect(order).to.ownProperty('menus');
+  it('Client must has a order atribute', () => {
+    expect(client).to.ownProperty('totalPrice');
   });
-  it('Client Menus atribute must be accesible', () => {
-    expect(order.menus).to.deep.equal([menuOne,menuTwo]);
+  it('Client order atribute must be accesible', () => {
+    expect(client.order).to.deep.equal(order);
   });
-  it('Client Plates atribute must be accesible', () => {
-    expect(order.carte).to.be.equal(carte);
+  it('Client totalPrice atribute must be accesible', () => {
+    expect(client.getTotalPrice()).to.be.equal(0);
   });
-  it('Client Plates atribute must be accesible', () => {
-    expect(order.print()).to.be.equal(orderOutput);
-  });
-  it('Client should chooose a menu by its name', () => {
-    expect(carte.findMenu('menu1')).to.be.equal(menuOne);
+  it('Client should choose a menu by its name', () => {
+    expect(client.chooseSetMenu('menu1', carte)).to.be.equal(menuOne);
+    expect(client.chooseSetMenu('menu6', carte)).to.be.equal(undefined);
   });
   it('Client should chooose a plate by its name', () => {
-    expect(carte.findPlate('batata')).to.be.equal(plateOne);
+    expect(client.choosePlate('batata', carte)).to.be.equal(plateOne);
+    expect(client.choosePlate('mojo', carte)).to.be.equal(undefined);
   });
-}); 
-
-*/
+  it('Client totalPrice must increase when choosing a plate', () => {
+    const client22 = new Client(new Order(carte));
+    client22.choosePlate('batata', carte);
+    expect(client22.getTotalPrice()).to.be.equal(20);
+  });
+});
