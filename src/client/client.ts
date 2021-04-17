@@ -23,12 +23,12 @@ export class Client {
   }
 
 
-  chooseSetMenu(nameElectedMenu: string, carte: Carte):Menu | undefined {
+  chooseSetMenu(nameElectedMenu: string, carte: Carte):Menu {
     const menuElected: Menu | undefined = carte.menus.find((menu) =>
       menu.name === nameElectedMenu);
     if (typeof menuElected === 'undefined') {
       console.log('error');
-      return undefined;
+      throw new TypeError('menu no encontrado')
     }
     this.totalPrice += menuElected.price;
     return menuElected as Menu;
@@ -38,12 +38,12 @@ export class Client {
   /* TODO
       cambiar plate por PersonalizedMenu
   */
-  choosePlate(nameElectedPlate: string, carte: Carte):Plate | undefined {
+  choosePlate(nameElectedPlate: string, carte: Carte):Plate {
     const plateElected: Plate | undefined = carte.plates.find((menu) =>
       menu.name === nameElectedPlate);
     if (typeof plateElected === 'undefined') {
       console.log('error');
-      return undefined;
+      throw new TypeError('plate not found')
     }
     this.totalPrice += plateElected.price;
     return plateElected as Plate;

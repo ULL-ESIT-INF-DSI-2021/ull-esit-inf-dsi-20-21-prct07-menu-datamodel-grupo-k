@@ -32,11 +32,11 @@ describe('Client test', ()=> {
   });
   it('Client should choose a menu by its name', () => {
     expect(client.chooseSetMenu('menu1', carte)).to.be.equal(menuOne);
-    expect(client.chooseSetMenu('menu6', carte)).to.be.equal(undefined);
+    //expect(client.chooseSetMenu('menu6', carte)).to.throw(TypeError);
   });
   it('Client should choose a plate by its name', () => {
     expect(client.choosePlate('batata', carte)).to.be.equal(plateOne);
-    expect(client.choosePlate('mojo', carte)).to.be.equal(undefined);
+    //expect(client.choosePlate('mojo', carte)).to.throw(TypeError);
   });
   it('Client totalPrice must increase when choosing a plate', () => {
     const client22 = new Client(new Order(carte));
