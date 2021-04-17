@@ -12,7 +12,7 @@ export abstract class Plate implements CompositionNutritional {
     public fiber: number = 0;
     public water: number = 0;
     private price: number = 0;
-    private predominantAlimentGroup?: [alimentGroup, number];
+    private predominantAlimentGroup: [alimentGroup, number] = [alimentGroup.Cereal,0];
 
     constructor(private name: string,
     private ingredients: Map<Aliment, number>) {
@@ -27,7 +27,7 @@ export abstract class Plate implements CompositionNutritional {
     getPrice(): number {
       return this.price;
     }
-    getPredominantAlimentGroup(): [alimentGroup, number]|undefined {
+    getPredominantAlimentGroup(): [alimentGroup, number] {
       return this.predominantAlimentGroup;
     }
     getIngredients(): string {
