@@ -16,5 +16,5 @@ export class Menu {
 }
 
 
-let menu = new Menu('menu1',255,'macarron','pasta')
+const menu = new Menu('menu1', 255, 'macarron', 'pasta');
 menu.print();
