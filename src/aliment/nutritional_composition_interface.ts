@@ -2,11 +2,11 @@ export interface CompositionNutritional {
     protein: number;
     fats: number;
     carbohydrates: number;
-    calories?: number;
-    starch?: number;
-    sugars?: number;
-    fiber?: number;
-    water?:number;
+    calories: number;
+    starch: number;
+    sugars: number;
+    fiber: number;
+    water:number;
     getCalories():number | undefined;
     getProtein(): number;
     getFats():number;
