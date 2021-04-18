@@ -33,9 +33,12 @@ export enum alimentGroup {
   }
 ```
 
-Ahora veremos la implementación de las demas clases, las cuales definen la categoria de un alimento.
+Ahora veremos la implementación de las demas clases, las cuales definen la categoria de un alimento. Sabiendo que no se puede instaciar un objeto de la clase `<Aliment>` porque es una clase abstracta. 
 
-Estas clases están implementadas con la clase abstracta **aliment**.
+Estas clases están implementadas con la clase abstracta **aliment**. Con estas clases si podemos instanciar el tipo de alimento que queremos.
+
+Estas son las clases extendidas de `<aliment>`:
+
 * CLASE FRUIT
 * CLASE VEGETABLE
 * CLASE LEGUME
