@@ -5,29 +5,27 @@ import {Order} from '../order/order';
 import {Carte} from '../carte/carte';
 import {PersonalizedMenu} from '../menu/personalizedmenu';
 import {Plate} from '../plates/plate';
+import {SetMenu} from '../menu/setmenu';
 
 export type modifierOption = 'add' | 'remove'
 export class Waiter {
-  private order: Order;
   constructor(
-      public readonly client: Client,
+      private client: Client,
       public readonly carte: Carte,
   ) {
-    this.order = this.client.order;
   }
 
-  addToOrder(menu: Menu):void {
-    this.order.menus.push(menu);
+  addToClientOrder(menu: Menu):void {
+    this.client.getOrder().addMenu(menu);
   }
 
   findAndAddSetMenu(setMenuName: string): Menu {
     const electedMenu: Menu | undefined = this.carte.menus.find((menu) =>
       menu.name === setMenuName);
     if (typeof electedMenu === 'undefined') {
-      console.log('error');
-      throw new TypeError('menu no encontrado');
+      throw new Error('menu not Found');
     }
-    this.addToOrder(electedMenu);
+    this.addToClientOrder(electedMenu);
     return electedMenu as Menu;
   }
 
@@ -38,36 +36,36 @@ export class Waiter {
       throw new TypeError('Plate not found');
     }
     const personalizedmenu = new PersonalizedMenu(plateName, [electedPlate]);
-    this.addToOrder(personalizedmenu);
+    this.addToClientOrder(personalizedmenu);
     return personalizedmenu;
   }
 
-  createAndAddMenuWithEditions(choice: modifierOption, plate: Plate, menu: Menu): PersonalizedMenu {
+  createAndAddMenuWithEditions(choice: modifierOption, plate: Plate, menu: SetMenu): PersonalizedMenu {
     let menuName: string = '';
     menuName += plate.getName();
 
-    const personalizeMenu = new PersonalizedMenu(menuName, [plate]);
+    const personalizeMenu = new PersonalizedMenu(menuName, menu.getPlates());
 
     if (choice === 'add') {
       personalizeMenu.addPlate(plate);
-      return personalizeMenu;
     } else {
       personalizeMenu.removePlate(plate);
-      return personalizeMenu;
     }
+    this.addToClientOrder(personalizeMenu);
+    return personalizeMenu;
   }
 
 
   printOrder():string {
-    return this.order.print();
+    return this.client.getOrder().print();
   }
 
   showCarte():string {
     return this.carte.print();
   }
 
-  getOrder():Order {
-    return this.order;
+  getClientOrder():Order {
+    return this.client.getOrder();
   }
 
   getClient():Client {
