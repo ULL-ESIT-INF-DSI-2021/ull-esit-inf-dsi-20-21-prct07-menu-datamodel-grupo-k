@@ -46,6 +46,22 @@ export abstract class Aliment implements GeneralInfo, CompositionNutritional {
      }
 
     abstract getAlimentGroup(): alimentGroup;
+    print(): string {
+      let output = "";
+      output += "Nombre: " + this.getName() + "\n";
+      output += "Precio: " + this.getPriceOfAliment() + "\n";
+      output += "Calorias: " + this.getCalories() + "\n";
+      output += "Proteinas: " + this.getProtein() + "\n";
+      output += "Grasas: " + this.getFats() + "\n";
+      output += "Carbohidratos: " + this.getCarbohydrates() + "\n";
+      output += "Almidon: " + this.getStarch() + "\n";
+      output += "Azucar: " + this.getSugars() + "\n";
+      output += "Fibra: " + this.getFiber() + "\n";
+      output += "Agua: " + this.getWater() + "\n";
+      output += "Localidad: " + this.getLocality() + "\n";
+      output += "Ciudad: " + this.getCity() + "\n";
+      return output;
+    }
     getCalories() {
       return this.calories;
     }
