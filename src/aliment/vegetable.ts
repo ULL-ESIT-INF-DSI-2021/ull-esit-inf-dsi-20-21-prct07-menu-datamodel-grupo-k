@@ -3,9 +3,32 @@
 import {Aliment} from "./aliment";
 import {alimentGroup} from './aliment';
 
+
+/**
+ * clase que representa a la categoria de un alimento. en este caso representa a los vegetables.
+ */
 export class Vegetable extends Aliment {
+  /**
+   * atributo del tipo gupo de alimentos
+   * para identificar que es un alimento de tipo Vegetable.
+   */
     private readonly AlimentGroup: alimentGroup = alimentGroup.Vegetable
 
+  /**
+   * 
+   * @param name que es atributo de la clase abstracta Aliment
+   * @param price que es atributo de la clase abstracta Aliment
+   * @param protein que es atributo de la interfaz nutricional_composicion
+   * @param fats que es atributo de la interfaz nutricional_composicion
+   * @param carbohydrates que es atributo de la interfaz nutricional_composicion
+   * @param calories que es atributo de la interfaz nutricional_composicion
+   * @param starch que es atributo de la interfaz nutricional_composicion
+   * @param sugars que es atributo de la interfaz nutricional_composicion
+   * @param fiber que es atributo de la interfaz nutricional_composicion
+   * @param water que es atributo de la interfaz nutricional_composicion
+   * @param locality que es atributo de la interfaz general info
+   * @param city que es atributo de la interfaz genereal info
+   */
     constructor(
         public readonly name: string,
         public readonly price: number,
