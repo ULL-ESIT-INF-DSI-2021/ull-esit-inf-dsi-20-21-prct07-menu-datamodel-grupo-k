@@ -2,6 +2,9 @@ import {Aliment, alimentGroup} from "../aliment/aliment";
 import {CompositionNutritional} from "../aliment/nutritional_composition_interface";
 import {Plate} from "../plates/plate";
 
+/**
+ * Clase Padre que gestiona la creacion de menus personalizados o preestablecidos
+ */
 export abstract class Menu implements CompositionNutritional {
     public protein: number = 0;
     public fats: number = 0;
@@ -14,15 +17,25 @@ export abstract class Menu implements CompositionNutritional {
     private price : number = 0;
     private alimentGroupList : [alimentGroup, number][] = [];
     protected plates : Plate[] = []
+    /**
+     * 
+     * @param name Nombre del menu
+     */
     constructor(public readonly name:string) {
     }
 
+    /**
+     * Metodo que calcula el precio total del menu en base a los platos que lo compone.
+     */
     protected calculatePrice() {
       this.plates.forEach((key) => {
         this.price += key.getPrice();
       });
     }
 
+    /**
+     * Metodo que calcula la composicion nutricional del menu en base a los platos que lo conforman.
+     */
     protected calculateNutritionalComposition() {
       this.plates.forEach((key) => {
         this.calories += key.getCalories();
@@ -36,62 +49,114 @@ export abstract class Menu implements CompositionNutritional {
       });
     }
 
+    /**
+     * Metodo que obtiene el alimento predominante de cada plato en el menu.
+     */
     protected identifyAlimentGroupList() {
       this.plates.forEach((key) => {
         this.alimentGroupList.push(key.getPredominantAlimentGroup());
       });
     }
 
+    /**
+     * Metodo que retorna el numero de calorias del menu.
+     * @returns caloras totales del menu.
+     */
     getCalories():number {
       return this.calories;
     }
 
+    /**
+     * Metodo que retorna el numero de proteinas del menu.
+     * @returns Proteinas totales del menu.
+     */
     getProtein(): number {
       return this.protein;
     }
 
+    /**
+     * Metodo que retorna el numero de grasas del menu.
+     * @returns Grasas totales del menu.
+     */
     getFats():number {
       return this.fats;
     }
 
+    /**
+     * Metodo que retorna el numero de carbohidratos del menu.
+     * @returns Cabohidratos totales del menu.
+     */
     getCarbohydrates(): number {
       return this.carbohydrates;
     }
 
+    /**
+     * Metodo que retorna el numero de almidon del menu.
+     * @returns Almidon total del menu
+     */
     getStarch():number {
       return this.starch;
     }
 
+    /**
+     * Metodo que retorna el numero de azucares del menu.
+     * @returns Azucares totales del menu.
+     */
     getSugars():number {
       return this.sugars;
     }
 
+    /**
+     * Metodo que retorna el numero de fibra del menu.
+     * @returns Fibra total del menu
+     */
     getFiber(): number {
       return this.fiber;
     }
 
+    /**
+     * Metodo que retorna el numero de agua del menu.
+     * @returns Cantidad de agua total del mnu.
+     */
     getWater(): number {
       return this.water;
     }
 
+    /**
+     * Metodo que retorna el precio del menu.
+     * @returns Precio total del menu.
+     */
     getPrice() : number {
       return this.price;
     }
 
+    /**
+     * Metodo que retorna todos los platos que conforman el menu.
+     * @returns Platos que conforman el menu.
+     */
     getPlates(): Plate[] {
       return this.plates;
     }
 
+    /**
+     * Metodo que devuelve el grupo de alimento predominante por cada plato que conforma el menu.
+     * @returns Alimento predominante de cada plato.
+     */
     getAlimentGroupList() : [alimentGroup, number][] {
       return this.alimentGroupList;
     }
 
+    /**
+     * Metodo que devuelve la informacion del menu.
+     * @returns 
+     */
     print() : string {
       let output = "";
       output += "Nombre: " + this.name + "\n";
       output += "Precio: " + this.getPrice() + "\n";
-      output += "Platos: \n" + this.plates.forEach((element) => {
-        output += "Nombre : " + element.getName() + " Precio : " + element.getPrice() + "\n";
+      output += "Platos: \n" 
+      this.plates.forEach((element) => {
+        output += "Nombre : " + element.getName() + "\n Precio : " + element.getPrice() + "\n";
       }); + "\n";
       output += "Composicion Nutricional: " + "\n";
       output += "Calorias: " + this.getCalories() + "\n";
