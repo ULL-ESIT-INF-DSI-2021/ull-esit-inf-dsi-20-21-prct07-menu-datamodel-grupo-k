@@ -4,7 +4,7 @@ import {Menu} from "./menu";
 /**
  * Clase para crear menus personalizados.
  */
- export class PersonalizedMenu extends Menu {
+export class PersonalizedMenu extends Menu {
   constructor(name: string, plates: Plate[]) {
     super(name);
     this.plates = plates;

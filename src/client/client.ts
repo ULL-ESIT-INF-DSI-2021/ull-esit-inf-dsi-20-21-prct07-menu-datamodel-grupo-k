@@ -1,6 +1,4 @@
-/* eslint-disable max-len */
 import {Order} from '../order/order';
-
 
 /**
  * Client that consume food in a restaurant, has an `order`.

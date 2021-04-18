@@ -71,8 +71,7 @@ export class Waiter {
    * @returns A `PersonalizedMenu`, with the edited menu
    */
   createAndAddMenuWithEditions(choice: modifierOption, plate: Plate, menu: SetMenu): PersonalizedMenu {
-    let menuName: string = '';
-    menuName += plate.getName();
+    const menuName: string = menu.name;
 
     const personalizeMenu = new PersonalizedMenu(menuName, menu.getPlates());
 

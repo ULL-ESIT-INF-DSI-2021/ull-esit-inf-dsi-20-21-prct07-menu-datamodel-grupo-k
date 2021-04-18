@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {Menu} from '../menu/menu';
 
 /**
@@ -14,7 +15,7 @@ export class Order {
 
 
   /**
-   * 
+   * Funtion
    * @param menu the `menu` to be added to the order
    */
   addMenu(menu: Menu):void {

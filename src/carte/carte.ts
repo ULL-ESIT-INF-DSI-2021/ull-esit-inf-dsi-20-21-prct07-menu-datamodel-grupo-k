@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {Plate} from '../plates/plate';
 import {SetMenu} from '../menu/setmenu';
 
@@ -5,9 +6,8 @@ import {SetMenu} from '../menu/setmenu';
  * implementation of a Restaurant Carte, its constais __plates__ and Predefined __SetMenus__
  */
 export class Carte {
-  
   /**
-   * 
+   *
    * @param plates The list of all plates that clients can consume
    * @param menus The list of Predefined Menus tthat clients can consume
    */
@@ -24,14 +24,14 @@ export class Carte {
    * Nombre: menuOne
    *    --Menus--
    * Precio: 20
-   * Platos: 
+   * Platos:
    * Nombre : macarron con tomate
    *  Precio : 6
    * Nombre : OtroPLato
    *  Precio : 6
    * Nombre : postre
    *  Precio : 8
-   * Composicion Nutricional: 
+   * Composicion Nutricional:
    * Calorias: 94
    * Proteinas: 12
    * Grasas: 18
@@ -41,10 +41,10 @@ export class Carte {
    * Fibra: 18
    * Agua: 24
    * Grupo de alimento predominante: Vegetable,200,Vegetable,200,Vegetable,250
-   * 
+   *
    * Nombre: menuTwo
    * Precio: 26
-   * Platos: 
+   * Platos:
    * Nombre : macarron con tomate
    *  Precio : 6
    * Nombre : OtroPLato

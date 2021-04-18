@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {Aliment, alimentGroup} from "../aliment/aliment";
 import {CompositionNutritional} from "../aliment/nutritional_composition_interface";
 import {Plate} from "../plates/plate";
@@ -18,7 +19,7 @@ export abstract class Menu implements CompositionNutritional {
     private alimentGroupList : [alimentGroup, number][] = [];
     protected plates : Plate[] = []
     /**
-     * 
+     *
      * @param name Nombre del menu
      */
     constructor(public readonly name:string) {
@@ -28,6 +29,7 @@ export abstract class Menu implements CompositionNutritional {
      * Metodo que calcula el precio total del menu en base a los platos que lo compone.
      */
     protected calculatePrice() {
+      this.price = 0;
       this.plates.forEach((key) => {
         this.price += key.getPrice();
       });
@@ -37,6 +39,14 @@ export abstract class Menu implements CompositionNutritional {
      * Metodo que calcula la composicion nutricional del menu en base a los platos que lo conforman.
      */
     protected calculateNutritionalComposition() {
+      this.calories = 0;
+      this.protein = 0;
+      this.fats = 0;
+      this.carbohydrates = 0;
+      this.starch = 0;
+      this.sugars = 0;
+      this.fiber = 0;
+      this.water = 0;
       this.plates.forEach((key) => {
         this.calories += key.getCalories();
         this.protein += key.getProtein();
@@ -53,11 +63,11 @@ export abstract class Menu implements CompositionNutritional {
      * Metodo que obtiene el alimento predominante de cada plato en el menu.
      */
     protected identifyAlimentGroupList() {
+      this.alimentGroupList = [];
       this.plates.forEach((key) => {
         this.alimentGroupList.push(key.getPredominantAlimentGroup());
       });
     }
-
     /**
      * Metodo que retorna el numero de calorias del menu.
      * @returns caloras totales del menu.
@@ -148,13 +158,13 @@ export abstract class Menu implements CompositionNutritional {
 
     /**
      * Metodo que devuelve la informacion del menu.
-     * @returns 
+     * @returns
      */
     print() : string {
       let output = "";
       output += "Nombre: " + this.name + "\n";
       output += "Precio: " + this.getPrice() + "\n";
-      output += "Platos: \n"
+      output += "Platos: \n";
       this.plates.forEach((element) => {
         output += "Nombre : " + element.getName() + "\n Precio : " + element.getPrice() + "\n";
       }); + "\n";

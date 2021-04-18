@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {alimentGroup} from "../aliment/aliment";
 import {Dessert} from "../plates/dessert";
 import {Entree} from "../plates/entree";
@@ -17,7 +18,6 @@ export class SetMenu extends Menu {
     } else {
       this.setPlates(entree, mainCourse, dessert);
     }
-
     this.calculatePrice();
     this.calculateNutritionalComposition();
     this.identifyAlimentGroupList();

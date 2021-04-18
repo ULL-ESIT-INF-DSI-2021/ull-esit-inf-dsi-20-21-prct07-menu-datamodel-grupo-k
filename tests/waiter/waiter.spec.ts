@@ -46,10 +46,11 @@ const plate5 = new Dessert('Sopa', ingredientesParaSopa);
 
 // Menus
 const menuOne = new SetMenu('menuOne', plate1, plate2, plate4);
+const menuOne1 = new SetMenu('menuOne', plate1, plate2, plate4);
 const menuTwo = new SetMenu('menuTwo', plate1, plate2, plate4, plate3);
 const menuThree = new PersonalizedMenu('menuthree', [plate5, plate5, plate4]);
-const menuFour = new PersonalizedMenu(plate1.getName(), [plate1, plate2, plate4]);
-const menuFive = new PersonalizedMenu(plate2.getName(), [plate1, plate2, plate4]);
+const menuFour = new PersonalizedMenu(menuOne.name, [plate1, plate2, plate4]);
+const menuFive = new PersonalizedMenu(menuOne.name, [plate1, plate2, plate4]);
 menuFour.addPlate(plate1);
 menuFive.removePlate(plate2);
 
@@ -92,7 +93,6 @@ describe('Waiter test', ()=> {
     expect(waiter.getClientOrder()).to.deep.equal(waiter.getClient().getOrder());
     expect(waiter.getClient().getOrder()).to.deep.equal(waiterOrder);
   });
-
   it('Waiter can add a plate to the order, the order and the client order must be update. ', () => {
     waiterOrder.addMenu(new PersonalizedMenu(plate4.getName(), [plate4]));
     expect(waiter.findAndAddPlate(plate4.getName())).to.deep.equal(new PersonalizedMenu(plate4.getName(), [plate4])); // adding plate
@@ -109,7 +109,7 @@ describe('Waiter test', ()=> {
 
   it('Waiter can create a Menu with a remove edition to the order, the order and the client order must be update. ', () => {
     waiterOrder.addMenu(menuFive);
-    expect(waiter.createAndAddMenuWithEditions('remove', plate2, menuOne)).to.deep.equal(menuFive); // adding plate
+    expect(waiter.createAndAddMenuWithEditions('remove', plate2, menuOne1).getPlates()).to.deep.equal(menuFive.getPlates()); // adding plate
     expect(waiter.getClientOrder()).to.deep.equal(waiter.getClient().getOrder()); // client order update
     expect(waiter.getClient().getOrder()).to.deep.equal(waiterOrder); // checking that is the right order
   });
