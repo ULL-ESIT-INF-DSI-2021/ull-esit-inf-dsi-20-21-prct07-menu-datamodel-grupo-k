@@ -126,7 +126,9 @@ export interface CompositionNutritional {
 Como podemos apreciar, esta interfaz implementa la composisción del alimento; las calorias, carbohidratos, proteinas,etc. para luego calcular el valor nutricional del plato y de los menus formados por estos alimentos.
 
 **INTERFAZ GENRAL INFO**
-Esta interfaz representa la información adicional de un alimento, es decir, lugar de donde provien y demas. Se ha diseñado de esta manera para que en un futuro podamos agregar con facilidad.
+
+Esta interfaz representa la información adicional de un alimento, es decir, lugar de donde proviene y demas. 
+Se ha diseñado de esta manera para que en un futuro podamos editar con facilidad este codigo.
 ```
 export interface GeneralInfo{
     locality?: string;
@@ -135,3 +137,4 @@ export interface GeneralInfo{
     getCity(): string | undefined;
 }
 ```
+`<locality>` y `<city>` son opcionales porque pueden o no especificarse en un alimento.
