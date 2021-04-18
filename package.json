@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "tsc-watch --onSuccess \"node dist/carte/carte.js\"",
+    "start": "tsc-watch --onSuccess \"node dist/waiter/waiter.js\"",
     "coverage": "nyc npm test && nyc report --reporter=lcov ",
     "doc": "typedoc"
   },

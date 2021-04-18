@@ -90,8 +90,9 @@ export abstract class Menu implements CompositionNutritional {
       let output = "";
       output += "Nombre: " + this.name + "\n";
       output += "Precio: " + this.getPrice() + "\n";
-      output += "Platos: \n" + this.plates.forEach((element) => {
-        output += "Nombre : " + element.getName() + " Precio : " + element.getPrice() + "\n";
+      output += "Platos: \n"  
+      this.plates.forEach((element) => {
+        output += "Nombre : " + element.getName() + "\n Precio : " + element.getPrice() + "\n";
       }); + "\n";
       output += "Composicion Nutricional: " + "\n";
       output += "Calorias: " + this.getCalories() + "\n";

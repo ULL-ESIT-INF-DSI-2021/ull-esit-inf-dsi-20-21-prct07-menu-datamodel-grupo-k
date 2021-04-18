@@ -12,7 +12,7 @@ export class Order {
   print():string {
     let output: string = '';
     if (this.menus.length === 0) {
-      output += 'Order Empty:' + '\n';
+      output += 'Empty Order:' + '\n';
     } else {
       output += 'Your Order is:' + '\n';
       output += '--Menus--' + '\n';
@@ -23,5 +23,13 @@ export class Order {
       output += this.totalPrice;
     }
     return output;
+  }
+
+  getTotalPrice():number {
+    return this.totalPrice;
+  }
+
+  getMenus():Menu[] {
+    return this.menus;
   }
 }

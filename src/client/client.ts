@@ -35,6 +35,7 @@ export class Client {
   }
 
 
+  /*
   choosePlate(nameElectedPlate: string, carte: Carte):PersonalizedMenu {
     const plateElected: Plate | undefined = carte.plates.find((cartePlate) => cartePlate.getName() === nameElectedPlate);
     if (typeof plateElected === 'undefined') {
@@ -56,4 +57,5 @@ export class Client {
       return personalizeMenu;
     }
   }
+  */
 }

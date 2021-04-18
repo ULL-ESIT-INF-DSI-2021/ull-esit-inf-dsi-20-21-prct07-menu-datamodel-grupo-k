@@ -1,9 +1,9 @@
 import {Plate} from '../plates/plate';
-import {Menu} from '../menu/menu';
+import {SetMenu} from '../menu/setmenu';
 export class Carte {
   constructor(
         public readonly plates: Plate[],
-        public readonly menus: Menu[],
+        public readonly menus: SetMenu[],
   ) {}
 
   print():string {
