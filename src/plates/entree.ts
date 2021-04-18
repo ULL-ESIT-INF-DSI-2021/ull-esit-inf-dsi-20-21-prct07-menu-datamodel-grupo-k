@@ -1,7 +1,5 @@
 /* eslint-disable max-len */
 import {Aliment} from "../aliment/aliment";
-import {Cereal} from "../aliment/cereal";
-import {Seed} from "../aliment/seed";
 import {Plate} from "./plate";
 /**
  * Clase para representar un plato entrante
