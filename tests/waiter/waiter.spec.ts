@@ -120,5 +120,4 @@ describe('Waiter test', ()=> {
   it('Waiter can show the Carte', () => {
     expect(waiter.showCarte()).to.be.equal(carte.print());
   });
-
 });

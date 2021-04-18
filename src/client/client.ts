@@ -1,11 +1,18 @@
 /* eslint-disable max-len */
 import {Order} from '../order/order';
 
-export type modifierOption = 'add' | 'remove'
+
+/**
+ * Client that consume food in a restaurant, has an `order`.
+ */
 export class Client {
   private order: Order = new Order();
   constructor() {}
 
+  /**
+   * print the clients order
+   * @returns In a string,  the clients order
+   */
   print():string {
     let output: string = '';
     output += 'My order is:' + '\n';
