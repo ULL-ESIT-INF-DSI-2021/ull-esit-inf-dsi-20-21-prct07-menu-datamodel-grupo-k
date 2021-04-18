@@ -1,8 +1,13 @@
 /* eslint-disable max-len */
 import {Aliment, alimentGroup} from "../aliment/aliment";
 import {CompositionNutritional} from "../aliment/nutritional_composition_interface";
-
+/**
+ * Clase abstracta para representar platos
+ */
 export abstract class Plate implements CompositionNutritional {
+  /**
+   * Variables para almacenar la composicion nutricional de cada plato
+   */
     public calories: number = 0;
     public protein: number = 0;
     public fats: number = 0;
@@ -12,24 +17,43 @@ export abstract class Plate implements CompositionNutritional {
     public fiber: number = 0;
     public water: number = 0;
     private price: number = 0;
-    private predominantAlimentGroup: [alimentGroup, number] = [alimentGroup.Cereal,0];
-
+    private predominantAlimentGroup: [alimentGroup, number] = [alimentGroup.Cereal, 0];
+    /**
+     * Constructor de la clase plate
+     * @param name Nombre del plato
+     * @param ingredients Ingredientes del plato
+     */
     constructor(private name: string,
     private ingredients: Map<Aliment, number>) {
       this.calculatePrice();
       this.identifyPredominantAlimentGroup();
       this.calculateNutritionalComposition();
     }
-
+    /**
+     * Get para el nombre del plato
+     * @returns Nombre del plato
+     */
     getName(): string {
       return this.name;
     }
+    /**
+     * Get para el precio del plato
+     * @returns Precio del plato
+     */
     getPrice(): number {
       return this.price;
     }
+    /**
+     * Get del grupo alimenticio del plato
+     * @returns Grupo alimenticio predominante del plato
+     */
     getPredominantAlimentGroup(): [alimentGroup, number] {
       return this.predominantAlimentGroup;
     }
+    /**
+     * Get para los ingredientes del plato
+     * @returns String con los ingredientes del plato
+     */
     getIngredients(): string {
       let output = "";
       this.ingredients.forEach((value, key) => {
@@ -37,35 +61,73 @@ export abstract class Plate implements CompositionNutritional {
       });
       return output;
     }
+    /**
+     * Get de las calorias del plato
+     * @returns Calorias del plato
+     */
     getCalories(): number {
       return this.calories;
     }
+    /**
+     * Get de las proteinas del plato
+     * @returns Proteinas del plato
+     */
     getProtein(): number {
       return this.protein;
     }
+    /**
+     * Get para las grasas del plato
+     * @returns Grasas del plato
+     */
     getFats(): number {
       return this.fats;
     }
+    /**
+     * Get para los carbohidratos del plato
+     * @returns Carbohidratos del plato
+     */
     getCarbohydrates(): number {
       return this.carbohydrates;
     }
+    /**
+     * Get para el almidon del plato
+     * @returns Almidon del plato
+     */
     getStarch(): number {
       return this.starch;
     }
+    /**
+     * Get para el azucar del plato
+     * @returns Azucar del plato
+     */
     getSugars(): number {
       return this.sugars;
     }
+    /**
+     * Get para la fibra del plato
+     * @returns Fibra del plato
+     */
     getFiber(): number {
       return this.fiber;
     }
+    /**
+     * Get del agua del plato
+     * @returns Agua del plato
+     */
     getWater(): number {
       return this.water;
     }
+    /**
+     * Funcion para calcular el precio total del plato segun el precio de cada alimento
+     */
     private calculatePrice() {
       this.ingredients.forEach((value, key) => {
         this.price += key.getPriceOfAliment();
       });
     }
+    /**
+     * Funcion para identificar el grupo de alimentos predominante en el plato
+     */
     private identifyPredominantAlimentGroup() {
       const max: Map<alimentGroup, number> = new Map();
       this.ingredients.forEach((value, key) => {
@@ -82,6 +144,9 @@ export abstract class Plate implements CompositionNutritional {
         }
       });
     }
+    /**
+     * Funcion para calcular la composicion nutricional total del plato
+     */
     private calculateNutritionalComposition() {
       this.ingredients.forEach((value, key) => {
         this.calories += key.getCalories();
@@ -94,6 +159,10 @@ export abstract class Plate implements CompositionNutritional {
         this.water += key.getWater();
       });
     }
+    /**
+     * Funcion para imprimir todas las caracteristicas de un plato
+     * @returns String con la estructura del plato
+     */
     print(): string {
       let output = "";
       output += "Nombre: " + this.getName() + "\n";
