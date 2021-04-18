@@ -4,7 +4,7 @@ import {Menu} from "./menu";
 /**
  * Clase para crear menus personalizados.
  */
-export class PersonalizedMenu extends Menu {
+ export class PersonalizedMenu extends Menu {
   constructor(name: string, plates: Plate[]) {
     super(name);
     this.plates = plates;
@@ -19,6 +19,9 @@ export class PersonalizedMenu extends Menu {
    */
   addPlate(plate : Plate) {
     this.plates.push(plate);
+    this.calculatePrice();
+    this.calculateNutritionalComposition();
+    this.identifyAlimentGroupList();
   }
 
   /**
@@ -29,6 +32,9 @@ export class PersonalizedMenu extends Menu {
     const index = this.plates.indexOf(plate, 0);
     if (index > -1) {
       this.plates.splice(index, 1);
+      this.calculatePrice();
+      this.calculateNutritionalComposition();
+      this.identifyAlimentGroupList();
     }
   }
 }
