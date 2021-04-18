@@ -1,69 +1,72 @@
-/*import 'mocha';
+/* eslint-disable max-len */
+
+import 'mocha';
 import {expect} from 'chai';
-import {Client} from '../../src/client/client';
-import {Menu} from '../../src/carte/menu';
 import {Carte} from '../../src/carte/carte';
+import {Menu} from '../../src/menu/menu';
+import {SetMenu} from '../../src/menu/setmenu';
+import {PersonalizedMenu} from '../../src/menu/personalizedmenu';
+import {Entree} from '../../src/plates/entree';
+import {MainCourse} from '../../src/plates/mainCourse';
+import {SecondCourse} from '../../src/plates/secondCourse';
+import {Dessert} from '../../src/plates/dessert';
+import {Aliment} from '../../src/aliment/aliment';
+import {Cereal} from '../../src/aliment/cereal';
+import {Fish} from '../../src/aliment/fish';
+import {Vegetable} from '../../src/aliment/vegetable';
 import {Order} from '../../src/order/order';
-import {Plate} from '../../src/carte/plate';
+import {Client} from '../../src/client/client';
 
 
-const menuOne = new Menu('menu1', 15, 'arrocito', 'grano' );
-const menuTwo = new Menu('menu2', 10, 'platodemenuDOS', 'pescado');
-const plateTwo = new Plate('pasta', 10);
-const plateOne = new Plate('batata', 20);
-const carte = new Carte([plateOne, plateTwo], [menuOne, menuTwo]);
-const order = new Order(carte);
-const client = new Client(order);
-const orderOutput = order.print();
-console.log(orderOutput);
+// Aliments
+const macarron = new Cereal('macarron', 2, 2, 3, 4, 5, 6, 9, 1, 2, 'espana', 'madrid');
+const salmon = new Fish('salmon', 5, 9, 3, 4, 5, 6, 9, 1, 2, 'escocia', 'escocia');
+const tomate = new Vegetable('tomate', 4, 2, 3, 5, 21, 5, 6, 4, 5, 'escocia', 'escocia');
 
-describe('Client test', ()=> {
-  it('Client must has a order atribute', () => {
-    expect(4+4).to.ownProperty(8);
-  });
+const arroz = new Cereal('arroz', 2, 2, 3, 4, 5, 6, 9, 1, 2, 'arroz', 'arroz');
+const atun = new Fish('atun', 5, 9, 3, 4, 5, 6, 9, 1, 2, 'atun', 'atun');
+const albahaca = new Vegetable('albahaca', 4, 2, 3, 5, 21, 5, 6, 4, 5, 'albahaca', 'albahaca');
+
+// Ingridients for Plate
+const ingredientesParaMacarronConTomate = new Map<Aliment, number>();
+ingredientesParaMacarronConTomate.set(macarron, 50);
+ingredientesParaMacarronConTomate.set(tomate, 200);
+
+const ingredientesParaSopa = new Map<Aliment, number>();
+ingredientesParaSopa.set(albahaca, 50);
+ingredientesParaSopa.set(tomate, 200);
+
+// Plates
+const plate1 = new Entree('macarron con tomate', ingredientesParaMacarronConTomate);
+const plate2 = new MainCourse('OtroPLato', ingredientesParaMacarronConTomate);
+const plate3 = new SecondCourse('postre', ingredientesParaMacarronConTomate);
+const plate4 = new Dessert('postre', ingredientesParaSopa);
+const plate5 = new Dessert('Sopa', ingredientesParaSopa);
+
+// Menus
+const menuOne = new SetMenu('menuOne', plate1, plate2, plate4);
+const menuTwo = new SetMenu('menuTwo', plate1, plate2, plate4, plate3);
+const menuThree = new PersonalizedMenu('menuthree', [plate5, plate5, plate4]);
+
+// Carte
+const carte = new Carte([plate1, plate2], [menuOne, menuTwo]);
+
+// Order
+const order = new Order([menuOne, menuTwo, menuThree]);
+const voidOrder = new Order();
+
+// Client
+const client = new Client();
+const output:string = client.print();
+
+describe('Client tests ...', ()=> {
   it('Client must has a order atribute', () => {
     expect(client).to.ownProperty('order');
   });
-  it('Client must has a order atribute', () => {
-    expect(client).to.ownProperty('totalPrice');
-  });
   it('Client order atribute must be accesible', () => {
-    expect(client.order).to.deep.equal(order);
+    expect(client.getOrder()).to.deep.equal(new Order());
   });
-  it('Client totalPrice atribute must be accesible', () => {
-    expect(client.getTotalPrice()).to.be.equal(0);
+  it('Client must print its Order', () => {
+    expect(client.print()).to.deep.equal(output);
   });
-  it('Client should choose a menu by its name', () => {
-    expect(client.chooseSetMenu('menu1', carte)).to.be.equal(menuOne);
-    //expect(client.chooseSetMenu('menu6', carte)).to.throw(TypeError);
-  });
-  it('Client should choose a plate by its name', () => {
-    expect(client.choosePlate('batata', carte)).to.be.equal(plateOne);
-    //expect(client.choosePlate('mojo', carte)).to.throw(TypeError);
-  });
-  it('Client totalPrice must increase when choosing a plate', () => {
-    const client22 = new Client(new Order(carte));
-    client22.choosePlate('batata', carte);
-    expect(client22.getTotalPrice()).to.be.equal(20);
-  });
-  // it('Client should choose a set menu and be able add a plate to the menu, () => {
-  //  expect(client.chooseSetMenuWithEdition('add',pasta,menu1).to.be.equal(personalizeMenu1WithPasta);
-  // });
-  // it('Client should choose a set menu and be able remove a plate to the menu, () => {
-  //  expect(client.chooseSetMenuWithEdition('remove',pasta,menu1).to.be.equal(personalizeMenu1WithoutPasta);
-  // });
-  // it('Client should choose a set menu and be able add a plate, adding the total value () => {
-  // client.chooseSetMenuWithEdition('add',pasta,menu1);
-  //  expect(client.getTotalPrice()).to.be.equal(999);
-  // });
-  // it('Client should choose a set menu and be able remove a plate, substracting the total value () => {
-  // client.chooseSetMenuWithEdition('remove',pasta,menu1);
-  // expect(client.getTotalPrice()).to.be.equal(500);
-  // });
-
-
-
-
-
 });
-*/

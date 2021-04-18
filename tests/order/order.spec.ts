@@ -52,11 +52,7 @@ const carte = new Carte([plate1, plate2], [menuOne, menuTwo]);
 
 // Order
 const order = new Order([menuOne, menuTwo, menuThree]);
-
 const ouput:string = order.print();
-
-console.log(order.print());
-
 
 describe('Order test', ()=> {
   it('Order must be an instantiable class', () => {

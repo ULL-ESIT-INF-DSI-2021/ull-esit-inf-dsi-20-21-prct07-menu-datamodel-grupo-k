@@ -1,20 +1,12 @@
 /* eslint-disable max-len */
-import {Plate} from '../plates/plate';
 import {Menu} from '../menu/menu';
-import {PersonalizedMenu} from '../menu/personalizedmenu';
 import {Carte} from '../carte/carte';
 import {Order} from '../order/order';
 
-/* TODO
-  encapsular todo los tipos en un solo fichero
-*/
-
 export type modifierOption = 'add' | 'remove'
-
 export class Client {
-  constructor(
-        public readonly order: Order,
-  ) {}
+  public readonly order: Order = new Order();
+  constructor() {}
 
   print():string {
     let output: string = '';
@@ -24,17 +16,19 @@ export class Client {
   }
 
 
-  chooseSetMenu(nameElectedMenu: string, carte: Carte):Menu {
+  /* chooseSetMenu(nameElectedMenu: string, carte: Carte):Menu {
     const menuElected: Menu | undefined = carte.menus.find((menu) =>
       menu.name === nameElectedMenu);
     if (typeof menuElected === 'undefined') {
       console.log('error');
-      throw new TypeError('menu no encontrado');
+      // throw new TypeError('menu no encontrado');
     }
     return menuElected as Menu;
+  }*/
+
+  getOrder(): Order {
+    return this.order;
   }
-
-
   /*
   choosePlate(nameElectedPlate: string, carte: Carte):PersonalizedMenu {
     const plateElected: Plate | undefined = carte.plates.find((cartePlate) => cartePlate.getName() === nameElectedPlate);
